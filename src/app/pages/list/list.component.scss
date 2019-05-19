@@ -1,0 +1,69 @@
+@import "../../../theme/common.scss";
+
+mat-form-field {
+  width: 25%;
+  min-width: 200px;
+  margin-top: 12px;
+  margin-bottom: 12px;
+}
+
+mat-table {
+  width: 100%;
+}
+
+th.mat-sort-header-sorted {
+  color: black;
+}
+
+.spinner-container {
+  position: fixed;
+  top: calc(50% - 25px);
+  left: calc(50% - 25px);
+  width: 100vw;
+  height: 100vh;
+}
+
+.right.mat-cell {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 48px;
+}
+
+.right.mat-header-cell {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 24px;
+  padding-left: 24px;
+}
+
+.center.mat-cell {
+  display: flex;
+  justify-content: center;
+  padding-right: 24px;
+  padding-left: 24px;
+}
+
+.center.mat-header-cell {
+  display: flex;
+  justify-content: center;
+  padding-right: 24px;
+  padding-left: 24px;
+}
+
+@media only screen and (max-width: 768px) {
+  mat-form-field {
+    width: 100%;
+  }
+
+  .hidden-md {
+    display: none !important;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .hidden-lg {
+    display: none !important;
+  }
+}
+
+

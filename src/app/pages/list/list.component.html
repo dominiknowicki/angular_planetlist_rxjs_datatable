@@ -1,0 +1,49 @@
+<section>
+  <mat-form-field>
+    <input matInput (keyup)="applyFilter()" placeholder="Search by name..." [formControl]="nameFilter">
+  </mat-form-field>
+
+  <mat-table [dataSource]="dataSource" matSort class="mat-elevation-z2">
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
+      <mat-cell *matCellDef="let planet"> {{planet.name}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="climate">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Climate</mat-header-cell>
+      <mat-cell *matCellDef="let planet"> {{planet.climate}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="gravity">
+      <mat-header-cell class="center hidden-md" *matHeaderCellDef mat-sort-header>Gravity</mat-header-cell>
+      <mat-cell class="center hidden-md" *matCellDef="let planet"> {{planet.gravity}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="diameter">
+      <mat-header-cell class="right hidden-md" *matHeaderCellDef mat-sort-header>Diameter</mat-header-cell>
+      <mat-cell class="right hidden-md" *matCellDef="let planet"> {{planet.diameter}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="rotationPeriod">
+      <mat-header-cell class="right hidden-md" *matHeaderCellDef mat-sort-header>Rotation Period</mat-header-cell>
+      <mat-cell class="right hidden-md" *matCellDef="let planet"> {{planet.rotation_period}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="orbitalPeriod">
+      <mat-header-cell class="right hidden-md" *matHeaderCellDef mat-sort-header>Orbital Period</mat-header-cell>
+      <mat-cell class="right hidden-md " *matCellDef="let planet"> {{planet.orbital_period}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="population">
+      <mat-header-cell class="right hidden-lg" *matHeaderCellDef mat-sort-header>Population</mat-header-cell>
+      <mat-cell class="right hidden-lg" *matCellDef="let planet"> {{planet.population}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="onRowClicked(row)"></mat-row>
+  </mat-table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons (page)="pageEvent($event)"></mat-paginator>
+  <div class="spinner-container" *ngIf="isLoading | async">
+    <mat-spinner [diameter]="50"></mat-spinner>
+  </div>
+</section>
