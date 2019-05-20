@@ -20,19 +20,25 @@
         <mat-divider></mat-divider>
         <mat-list-item><span>Surface Water:</span>{{planet.surface_water}}</mat-list-item>
         <mat-divider></mat-divider>
-        <mat-expansion-panel class="mat-elevation-z0">
+        <mat-expansion-panel *ngIf="planet.residents.length > 0; else noResidents" class="mat-elevation-z0">
           <mat-expansion-panel-header>
             <mat-panel-title>Residents:</mat-panel-title>
           </mat-expansion-panel-header>
           <a *ngFor="let resident of planet.residents" href="{{resident}}" target="_blank">{{resident}} <br/></a>
         </mat-expansion-panel>
+        <ng-template #noResidents>
+          <mat-list-item><span>Residents:</span>N/A</mat-list-item>
+        </ng-template>
         <mat-divider></mat-divider>
-        <mat-expansion-panel class="mat-elevation-z0">
+        <mat-expansion-panel *ngIf="planet.films.length > 0; else noFilms" class="mat-elevation-z0">
           <mat-expansion-panel-header>
             <mat-panel-title>Films:</mat-panel-title>
           </mat-expansion-panel-header>
           <a *ngFor="let film of planet.films" href="{{film}}" target="_blank">{{film}} <br/></a>
         </mat-expansion-panel>
+        <ng-template #noFilms>
+          <mat-list-item><span>Films:</span>N/A</mat-list-item>
+        </ng-template>
         <mat-divider></mat-divider>
         <mat-list-item><span>Created:</span>{{planet.created | date:'medium'}}</mat-list-item>
         <mat-divider></mat-divider>
