@@ -8,12 +8,17 @@ import {HttpClientModule} from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MaterialModule} from './shared/material/material.module';
 import {CookieService} from 'ngx-cookie-service';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { DetailsComponent } from './pages/details/details.component';
+import { NotfoundComponent } from './pages/notfound/notfound.component';
+import {MatButtonModule, MatCardModule, MatExpansionModule, MatIconModule, MatListModule} from '@angular/material';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ListComponent
+    ListComponent,
+    DetailsComponent,
+    NotfoundComponent
   ],
   imports: [
     BrowserModule,
@@ -21,7 +26,13 @@ import {ReactiveFormsModule} from '@angular/forms';
     HttpClientModule,
     MaterialModule,
     BrowserAnimationsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule,
+    MatIconModule,
+    MatButtonModule,
+    MatCardModule,
+    MatListModule,
+    MatExpansionModule
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]

@@ -36,7 +36,7 @@ export class ListComponent implements OnInit {
     this.dataSource.sort = this.sort;
     this.dataSource.filterPredicate =
       (planet: Planet, searchedName: string) => (!searchedName || planet.name.toLocaleLowerCase().includes(searchedName));
-    this.getPlanetList(ApiConfig.planetListUrl);
+    this.getPlanetList(ApiConfig.planetsUrl);
     if (this.cookie.get('pageSize')) {
       this.paginator._changePageSize(parseInt(this.cookie.get('pageSize'), 10));
     }
@@ -73,14 +73,14 @@ export class ListComponent implements OnInit {
   onRowClicked(planet: Planet): void {
     const id = this.getId(planet);
     console.log(id);
-    // if (!isNaN(id)) {
-    //   this.router.navigate([ApiConfig.planetListUrl + id]);
-    // }
+    if (!isNaN(id)) {
+      this.router.navigate(['planet/' + id]);
+    }
   }
 
   private getId(planet: Planet): number {
     if (planet.url) {
-      const id = planet.url.trim().replace(ApiConfig.planetListUrl, '').replace('\/', '');
+      const id = planet.url.trim().replace(ApiConfig.planetsUrl, '').replace('\/', '');
       return parseInt(id, 10);
     }
   }

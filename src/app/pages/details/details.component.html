@@ -1,0 +1,46 @@
+<section class="details">
+  <mat-icon (click)="goBack()" class="go-back-button">arrow_back</mat-icon>
+  <div *ngIf="planet">
+    <mat-card class="mat-elevation-z2">
+      <mat-card-title>{{planet.name | uppercase}}</mat-card-title>
+      <mat-list>
+        <mat-list-item><span>Climate:</span>{{planet.climate}}</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item><span>Gravity:</span>{{planet.gravity}}</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item><span>Diameter:</span>{{planet.diameter}}</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item><span>Rotation Period:</span>{{planet.rotation_period}}</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item><span>Orbital Period:</span>{{planet.orbital_period}}</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item><span>Population:</span>{{planet.population}}</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item><span>Terrain:</span>{{planet.terrain}}</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item><span>Surface Water:</span>{{planet.surface_water}}</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-expansion-panel class="mat-elevation-z0">
+          <mat-expansion-panel-header>
+            <mat-panel-title>Residents:</mat-panel-title>
+          </mat-expansion-panel-header>
+          <a *ngFor="let resident of planet.residents" href="{{resident}}" target="_blank">{{resident}} <br/></a>
+        </mat-expansion-panel>
+        <mat-divider></mat-divider>
+        <mat-expansion-panel class="mat-elevation-z0">
+          <mat-expansion-panel-header>
+            <mat-panel-title>Films:</mat-panel-title>
+          </mat-expansion-panel-header>
+          <a *ngFor="let film of planet.films" href="{{film}}" target="_blank">{{film}} <br/></a>
+        </mat-expansion-panel>
+        <mat-divider></mat-divider>
+        <mat-list-item><span>Created:</span>{{planet.created | date:'medium'}}</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item><span> Edited:</span>{{planet.edited | date:'medium'}}</mat-list-item>
+      </mat-list>
+    </mat-card>
+  </div>
+  <div class="spinner-container" *ngIf="isLoading | async">
+    <mat-spinner [diameter]="50"></mat-spinner>
+  </div>
+</section>

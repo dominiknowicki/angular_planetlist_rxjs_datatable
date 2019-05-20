@@ -1,0 +1,20 @@
+@import "../../../theme/common.scss";
+
+section.not-found {
+  text-align: left;
+  margin-top: $margin;
+
+  button {
+    margin-left: -16px;
+  }
+}
+
+@media only screen and ($breakpoint-md) {
+  section.not-found {
+    text-align: center;
+  }
+
+  button {
+    margin-left: 0;
+  }
+}

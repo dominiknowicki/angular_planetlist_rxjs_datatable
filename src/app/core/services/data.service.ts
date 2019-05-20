@@ -15,12 +15,21 @@ export class DataService {
   constructor(private http: HttpClient) {
   }
 
-  /** GET data from the server */
+  /** GET Planet[] from the server */
   getPlanetList(url: string): Observable<BaseResponse<Planet[]>> {
     return this.http.get<BaseResponse<Planet[]>>(url)
       .pipe(
         tap(result => this.log(`fetched planet ${result.count} list`)),
         catchError(this.handleError<BaseResponse<Planet[]>>('getPlanetList', new BaseResponse<Planet[]>()))
+      );
+  }
+
+  /** GET single Planet model from the server */
+  getPlanet(id: number): Observable<Planet> {
+    return this.http.get<Planet>(ApiConfig.planetsUrl + id + '/')
+      .pipe(
+        tap(_ => this.log(`fetched planet with id: ${id}`)),
+        catchError(this.handleError<Planet>('getPlanetList', new Planet()))
       );
   }
 
@@ -32,19 +41,15 @@ export class DataService {
    */
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
-
-      // TODO: send the error to remote logging infrastructure
-      console.error(error); // log to console instead
-
-      // TODO: better job of transforming error for user consumption
       this.log(`${operation} failed: ${error.message}`);
-
-      // Let the app keep running by returning an empty result.
       return of(result as T);
     };
   }
 
-  /** Log a message */
+  /**
+   * Custom log
+   *  @param message - error message that will be logged
+   */
   private log(message: string) {
     console.log(`DataService: ${message}`);
     // TODO: report to a report tool

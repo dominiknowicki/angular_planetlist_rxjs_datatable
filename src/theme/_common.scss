@@ -1,40 +1,54 @@
 @import "./variables.scss";
 
 header {
-  padding-left: 5%;
-  padding-right: 5%;
+  height: $header-height;
+  padding-left: $margin;
+  padding-right: $margin;
   background: indigo;
 }
 
 main {
-  margin: 1% 5% 5% 5%;
+  margin: 1% $margin $margin $margin;
 }
 
 h1 {
   display: inline-block;
-  padding-top: 12px;
-  padding-bottom: 12px;
+  margin: 0;
   font-size: 2.25em;
-  font-family: sans-serif;
+  line-height: $header-height;
   color: white;
 }
 
-h2 {
-  margin-top: 0;
-  padding-top: 0;
+.spinner-container {
+  position: fixed;
+  top: calc(50% - 25px);
+  left: calc(50% - 25px);
+  width: 100vw;
+  height: 100vh;
+}
+
+.go-back-button {
+  position: absolute;
+  top: 0;
+  left: 12px;
   font-size: 2em;
+  line-height: $header-height;
+  color: white;
+  cursor: pointer;
 }
 
-nav a {
-  margin-top: 10px;
-  padding: 5px 10px;
-  text-decoration: none;
-  display: inline-block;
-  background-color: #eee;
-  border-radius: 4px;
+@media only screen and (max-width: $breakpoint-md) {
+  h1 {
+    width: 100%;
+    text-align: center;
+  }
+  .hidden-md {
+    display: none !important;
+  }
 }
 
-nav a:hover {
-  color: #039be5;
-  background-color: #cfd8dc;
+@media only screen and (max-width: $breakpoint-lg) {
+  .hidden-lg {
+    display: none !important;
+  }
 }
