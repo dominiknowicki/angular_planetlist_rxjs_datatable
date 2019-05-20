@@ -5,10 +5,10 @@ import {DetailsComponent} from './pages/details/details.component';
 import {NotfoundComponent} from './pages/notfound/notfound.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: '/list', pathMatch: 'full'},
   {path: 'list', component: ListComponent},
   {path: 'planet/:id', component: DetailsComponent},
   {path: 'not-found', component: NotfoundComponent},
+  {path: '**', redirectTo: '/list', pathMatch: 'full'},
 ];
 
 @NgModule({
